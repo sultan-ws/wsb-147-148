@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Assistant', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+header{
+    padding: 10px 30px;
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    z-index: 9999;
+}
+
+header nav > ul{
+    display: flex;
+}
+
+header nav ul a{
+    color: rgb(40, 44, 63);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 0 15px;
+}
+
+nav ul li:last-child{
+    position: relative;
+}
+
+nav ul li:last-child span{
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    color:rgb(255, 63, 108);
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+header figure{
+    width: 60px;
+}
+img{
+    width: 100%;
+}
+
+.search-bar{
+    width: 500px;
+    position: relative;
+}
+
+.search-bar input{
+    width: 100%;
+    padding: 8px 10px 8px 50px;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    outline: none;
+    font-weight: 600;
+}
+
+.search-bar i{
+    position: absolute;
+    top: 11px;
+    left: 12px;
+    color: grey;
+    
+}
+
+.header-user{
+    /* border: 1px solid black; */
+}
+
+.header-user li{
+    color: rgb(40, 44, 63);
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+nav ul li {
+    position: relative;
+}
+
+.menu{
+    width: 1000px;
+    background-color: red;
+    position: absolute;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}

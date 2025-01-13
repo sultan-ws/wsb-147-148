@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 200px;
+            background-color: olive;
+        }
+
+        .container:nth-of-type(even){
+            background-color: cyan;
+        }
+        .this{
+            border: 2px solid black;
+        }
+
+        .box{
+            height: 100%;
+            width: 200px;
+            background-color: black;
+            position:absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container this">
+        <div class="box"></div>
+        <div>hello</div>
+    </div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+</body>
+</html>

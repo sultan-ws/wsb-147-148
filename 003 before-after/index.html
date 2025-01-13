@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        header{
+            background-color: whitesmoke;
+        }
+
+        header ul{
+            display: flex;
+            padding: 20px 30px;
+        }
+
+        header ul li{
+            margin: 0 20px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+        li::before{
+            content: '';
+            position: absolute;
+            /* width: 0%; */
+            height: 2px;
+            background-color: black;
+            bottom: -20px;
+            /* right: 0; */
+            transition: 0.4s;
+            width: 120%;
+            scale: 0;
+        }
+
+        header ul li:hover::before{
+            /* left: 0; */
+            /* width: 100%; */
+            scale:1;
+        }
+
+        .container{
+            height: 80vh;
+            border: 1px solid red;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            display: grid;
+            place-items: center;
+        }
+
+        .inner{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            box-shadow: inset -5px -5px 10px 4px grey,  -5px -5px 10px 4px grey;
+
+            text-shadow: 2px 2px 5px black;
+        }
+
+        /* li::after{
+            content: '😊';
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>nav 1</li>
+                <li>nav 2</li>
+                <li>nav 3</li>
+                <li>nav 4</li>
+                <li>nav 5</li>
+                <li>nav 6</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="inner">
+            <h1>Hello World</h1>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- transform -->

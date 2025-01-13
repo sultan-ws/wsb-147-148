@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            height: 1000px;
+            border: 8px solid red;
+        }
+
+        .box{
+            background-color: blue;
+            position: fixed;
+            top: 0; /* bottom*/
+            left: 0; /* right */
+            z-index: 10;
+        }
+
+        .extra{
+            background-color: yellow;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Hello</h1>
+        </div>
+        <div class="extra">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam tenetur voluptate optio laudantium? Nostrum, aut qui repudiandae doloremque optio ratione eum nam eaque vitae placeat ea tempora corrupti ex accusantium.
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 600px;
+            border: 5px solid red;
+        }
+        .box{
+            width: 100px;
+            height: 90px;
+            background-color: yellow;
+            margin-top: 10px;
+            position: fixed;
+            left:0;
+            transition: 1s;
+        }
+
+        .box:nth-child(1){
+            top: 20px;
+            transition-timing-function: ease;
+        }
+        .box:nth-child(2){
+            top: 120px;
+            transition-timing-function: ease-in;
+        }
+        .box:nth-child(3){
+            top: 220px;
+            transition-timing-function: ease-in-out;
+        }
+        .box:nth-child(4){
+            top: 320px;
+            transition-timing-function: ease-out;
+        }
+        .box:nth-child(5){
+            top: 420px;
+            transition-timing-function: linear;
+        }
+
+        .container:hover .box{
+            left: 80%;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">ease</div>
+        <div class="box">ease-in</div>
+        <div class="box">ease-in-out</div>
+        <div class="box">ease-out</div>
+        <div class="box">default</div>
+    </div>
+</body>
+</html>
