@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .truck-container{
+            position: fixed;
+            left: -20%;
+            animation: runTruck 6s infinite linear;
+            bottom: 12px;
+        }
+        .truck-wheels{
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 80%;
+            bottom: -15px;
+            left: 16px;
+        }
+
+        .truck-wheels img{
+            animation: rotateWheels 1s infinite linear;
+        }
+
+        @keyframes rotateWheels{
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes runTruck{
+            100%{
+                left: 120%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="truck-container">
+        <div class="truck-body">
+            <img src="https://packshifts.in/images/truck-1.png" alt="">
+        </div>
+        <div class="truck-wheels">
+            <div><img src="https://packshifts.in/images/wheel-2.png" alt=""></div>
+            <div><img src="https://packshifts.in/images/wheel-2.png" alt=""></div>
+        </div>
+    </div>
+</body>
+</html>

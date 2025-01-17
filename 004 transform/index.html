@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        .inner{
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            background-image: url('./download.jpg');
+            background-size: cover;
+        }
+
+        p{
+            font-size: 18px;
+            color: white;
+            padding: 20px;
+            text-align: justify;
+            transform: scale(0) rotate(180deg);
+            transition: 0.4s;
+            /* text-shadow: 2px 2px 5px 5px black; */
+        }
+        
+        .inner:hover p{
+            transform: scale(1) rotate(0deg);
+            /* transform: rotate(360deg); */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner">
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptatum, voluptate consequatur doloremque fugiat, quod repellat est rem dolorem explicabo nostrum velit quasi tempore quia omnis soluta debitis. Odit, unde.
+            </p>
+        </div>
+        
+    </div>
+</body>
+</html>
