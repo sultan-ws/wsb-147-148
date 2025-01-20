@@ -1,0 +1,28 @@
+@media only screen and (max-width: 1180px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* @media only screen and (max-width: 992px) {}; */
+
+@media only screen and (max-width: 768px){
+    .header-contact{
+        display: none;
+    }
+
+    nav{
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .contact-container{
+        width: 100%;
+        display: unset;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: fixed;
+        bottom: 0;
+    }
+}

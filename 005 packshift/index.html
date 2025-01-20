@@ -4,37 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .truck-container{
-            position: fixed;
-            left: -20%;
-            animation: runTruck 6s infinite linear;
-            bottom: 12px;
-        }
-        .truck-wheels{
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            width: 80%;
-            bottom: -15px;
-            left: 16px;
-        }
-
-        .truck-wheels img{
-            animation: rotateWheels 1s infinite linear;
-        }
-
-        @keyframes rotateWheels{
-            100%{
-                transform: rotate(360deg);
-            }
-        }
-        @keyframes runTruck{
-            100%{
-                left: 120%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/media.css">
 </head>
 <body>
     <div class="truck-container">
@@ -45,6 +16,28 @@
             <div><img src="https://packshifts.in/images/wheel-2.png" alt=""></div>
             <div><img src="https://packshifts.in/images/wheel-2.png" alt=""></div>
         </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <figure class="logo">
+                    <img src="https://packshifts.in/images/logo.png" alt="">
+                </figure>
+                <button class="header-contact">
+                    1234567890
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contact-container">
+        <button>
+            Call now
+        </button>
+        <button>
+            What's app
+        </button>
     </div>
 </body>
 </html>
