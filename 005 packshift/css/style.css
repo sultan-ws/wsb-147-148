@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 .truck-container{
     position: fixed;
@@ -44,7 +45,8 @@ nav{
     align-items: center;
 }
 
-img{
+img,
+iframe{
     width: 100%;
 }
 
@@ -55,4 +57,86 @@ img{
 
 .contact-container{
     display: none;
+}
+
+.banner-container{
+    background-image: url('https://packshifts.in/images/banner.jpg');
+    background-size: cover;
+    padding: 50px 0 80px 0;
+}
+
+.banner{
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    gap: 20px;
+    align-items: center;
+    color: white;
+}
+
+.banner-form{
+    padding: 0 35px;
+}
+
+.banner-form form{
+    padding: 25px 16px;
+    background-color: #F3F3F3;
+    border-radius: 20px;
+}
+
+.banner-form form h2{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.banner-form input{
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px 0;
+    outline: none;
+}
+
+.captch-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    /* align-items: center; */
+}
+
+.captch-container div div{
+    width: 100%;
+    background-color:#FFCF3F;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.captch-container > div:last-child{
+    padding: 6px 0;
+}
+
+.submit-container button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.banner-img-container{
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.videos-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 30px 0;
+}
+
+.videos-container iframe{
+    height: 200px;
+    border-radius: 20px;
 }
