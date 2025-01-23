@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Inter", serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 135px;
+}
+
+.contact-btns button:first-child{
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #27AE60;
+    cursor: pointer;
+}
+
+.contact-btns button:first-child i{
+    color: #27AE60;
+    font-weight: 700;
+}
+
+.contact-btns button:first-child a{
+    color: #27AE60;
+    font-weight: 400;
+    
+}
+
+.contact-btns button:last-child{
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.contact-btns button:last-child a{
+    color: white;
+    font-weight: 400;
+}
+
+.contact-btns button:last-child i{
+    display: none;
+}
+
+.theme-btn{
+    background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.theme-btn:hover{
+    border-color: black !important;
+    background: transparent !important;
+}
+
+.theme-btn:hover a{
+    color: black !important;
+}
+
+.container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+.opportunity-container{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 20px;
+}
+
+.opportunity-content h1{
+    font-size: 52px;
+    line-height: 68px;
+    font-weight: 700;
+    background-image: url('./../images/Vector\ 63.png');
+    background-repeat: no-repeat;
+    background-position: 14% 100%;
+    background-size: 42%;
+}
+
+.opportunity-container h1 span{
+    background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+    background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+
+.opportunity-container p{
+    font-size: 22px;
+    font-weight: 400;
+    color: #0A2134;
+    line-height: 35px;
+    margin: 20px 0;
+}
+
+.opportunity-container li{
+    line-height: 33px;
+    font-weight: 400;
+    font-size: 22px;
+    margin: 10px 0;
+    color: #0A2134;
+}
+
+.opportunity-container li i{
+    color: #2699FB;
+}
+
+.opportunity-container div{
+    margin-top: 20px;
+}

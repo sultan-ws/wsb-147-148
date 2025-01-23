@@ -19,7 +19,7 @@
         max-width: 600px;
         margin: auto;
     }
-    .videos-container{
+    .videos-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -46,7 +46,7 @@
     .banner-form{
         padding: 0;
     }
-    .videos-container{
+    .videos-container {
         grid-template-columns: repeat(1, 1fr);
     }
 }

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        a {
+            color: black;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 0 4px 1px lightgray;
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .contact button {
+            padding: 10px;
+            border: 1px solid black;
+            background-color: skyblue;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .contact i {
+            font-size: 20px;
+        }
+
+        .contact span {
+            color: black;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            nav ul {
+                display: flex;
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .contact i {
+                font-size: 16px;
+            }
+
+            header {
+                padding: 10px;
+            }
+        }
+
+        @media only screen and (max-width: 992px) {
+            nav {
+                /* display: none; */
+                position: absolute;
+                transition: 0.4s;
+                width: 60%;
+                top: 100%;
+                left: -100%;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul{
+                flex-direction: column;
+            }
+
+            nav li{
+                font-size: 18px;
+                padding: 10px;
+                border-bottom: 1px solid white;
+            }
+
+            .menu-button {
+                display: block;
+                font-size: 35px;
+                font-weight: 800;
+            }
+            .contact span{
+                display: none;
+            }
+
+            .contact i{
+                font-size: 22px;
+            }
+
+            .menu-button:hover ~ nav{
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="menu-button">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <figure class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiNuvdA60X9tQmlPWSA2qd2ZojccIVAes_HA&s"
+                alt="">
+        </figure>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">Features</a></li>
+                <li><a href="">Gallery</a></li>
+                <li><a href="">Partners</a></li>
+                <li><a href="">Enquiry</a></li>
+                <li><a href="">Our Story</a></li>
+            </ul>
+        </nav>
+        <div class="contact">
+            <button>
+                <i class="fa-solid fa-phone"></i>
+                <span>Call</span>
+            </button>
+            <button>
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>What's app</span>
+            </button>
+        </div>
+    </header>
+</body>
+
+</html>

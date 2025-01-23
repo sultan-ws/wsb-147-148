@@ -1,0 +1,36 @@
+@media only screen and (max-width: 1200px){
+    .container{
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    header{
+        padding: 5px 10px;
+    }
+    .contact-btns button:first-child a{
+        display: none;
+    }
+    .contact-btns button:first-child i{
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .contact-btns button:first-child{
+        border: none;
+        padding: unset;
+        background:transparent;
+    }
+    .contact-btns button:last-child i{
+        display: unset;
+        font-size: 26px;
+        color: white;
+        font-weight: 600;
+    }
+
+    .contact-btns button:last-child:hover i{
+        color: black;
+    }
+    .contact-btns button:last-child a{
+        display: none;
+    }
+}
