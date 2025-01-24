@@ -1,0 +1,299 @@
+@media only screen and (max-width: 1170px) {
+    .main{
+        padding: 0 10vw;
+    }
+
+    .certificate-section .container > div:last-child{
+        padding: 10px 40px;
+    }
+}
+
+@media only screen and (max-width : 992px){
+    .logo{
+        width: 16vw;
+    }
+    .career-section{
+        flex-direction: column;
+    }
+    .career-section > div{
+        width: 100%;
+    }
+    .career-section > div:first-child{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .career-section > div:first-child > h1{
+        font-size: 5vw;
+        background-position: 50% bottom;
+        background-size: 50%;
+    }
+    .career-section > div:first-child > p{
+        font-size: 15px;
+        line-height: 6vw;
+    }
+    .career-section > div:first-child > ul{
+        line-height: 30px;
+        font-size: 14px;
+        padding: 20px 0;
+        text-align: left;
+    }
+
+    .career-section > div:first-child button{
+        padding: 10px 48px !important;
+        margin: 5px 0;
+    }
+    .career-section > div:last-child{
+        padding-top: 40px;
+    }
+
+    .about-section ul{
+        flex-direction: column;
+    }
+    
+    .about-section ul li{
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 8vw;
+        border-bottom: 1px solid var(--input-border);
+        font-size: 24px;
+    }
+
+    .about-section ul li:last-child{
+        border: none;
+    }
+
+    .about-section ul li span{
+        font-size: 14px;
+    }
+
+    .hightlight-item{
+        width: 48%;
+    }
+    .highlight-section .container > h2{
+        font-size: 6vw;
+        text-align: center;
+    }
+    
+    .highlight-section .container > p{
+        font-size: 4vw;
+        text-align: center;
+    }
+
+    .card-box > div{
+        width: 42%;
+    }
+
+    .certificate-section .container > div{
+        width: 100%;
+        padding: 60px 10px;
+    }
+
+    .certificate-section .container > div > h2{
+        font-size: 20px;
+    }
+    .certificate-section .container > div > p{
+        font-size: 16px;
+        padding: 16px 0;
+    }
+
+    .why-dm-section .container > h2{
+        text-align: center;
+        font-size: 20px;
+     }
+
+     .why-dm-section .container > p{
+        text-align: center;
+        font-size: 17px;
+     }
+
+     .dm-inner{
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        padding: 20px 0;
+     }
+    
+}
+
+@media only screen and (max-width : 667px){
+
+    .main{
+        padding: 0 2vw;
+    }
+    .logo{
+        width: 28vw;
+    }
+    .nav button:first-child{
+        border: none;
+        font-size: 8vw;
+        padding: 0;
+    }
+    .nav button:first-child span{
+        display: none;
+    }
+    .nav button:first-child i{
+        margin: 0;
+        font-weight: bold;
+    }
+    .header .themeBtn i{
+        display: inline-block;
+    }
+    .header .themeBtn span{
+        display: none;
+    }
+
+    .about-section ul li{
+        font-size: 20px;
+    }
+
+    .about-section ul li span{
+        font-size: 10px;
+    }
+
+    .hightlight-item{
+        width: 98%;
+    }
+
+    .highlight-section .inner{
+    justify-content: center;
+    }
+
+    .hightlight-item > div:last-child{
+        font-size: 4vw;
+    }
+
+    .hightlight-item > div:last-child span{
+        font-size: 12px;
+    }
+
+    .highlight-section .themeBtn{
+        display: block;
+        margin:20px auto 0 auto;
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+
+    .career-option-section h3{
+        font-size: 22px;
+    }
+    
+    .career-option-section .container > p{
+        font-size: 14px;
+        margin: 15px 0;
+    }
+
+    .card-box > div{
+        width: 98%;
+    }
+
+    .card-box > div > h4{
+        margin: 10px 0;
+        font-size: 17px;
+    }
+    
+    .card-box > div > p{
+        font-size: 14px;
+        color: var(--text-color);
+    }
+    
+    .certificate-card > div:first-child{
+        display: flex;
+        align-items: center;
+        width: 20%;
+        padding: 2px;
+    }
+
+
+    .certificate-card > div:last-child h3{
+        font-size: 17px;
+    }
+
+    .certificate-card > div:last-child p{
+        font-size: 14px;
+    }
+
+    .certificate-section{
+        padding: 20px 0;
+    }
+
+    .curriculum-section > h1{
+        font-size: 24px;
+     }
+
+     .curriculum-section > p{
+        font-size: 15px;
+     }
+
+     .tab-head ul li{
+        font-size: 15px;
+        padding: 8px;
+     }
+
+     .tab-body ul li{
+        width: 100%;
+        font-size: 16px;
+        grid-template-columns: 20px auto;
+     }
+
+     .tab-body ul li i {
+        padding-top: 2px;
+     }
+
+     .dm-inner{
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 10px 0;
+     }
+
+     .dm-inner .dm-card h3{
+        margin: 8px 0;
+        font-size: 17px;
+     }
+
+     .ready-to-start-section .container > div{
+        background-size: 50%, 50%, cover;
+     }
+
+     .why-dm-section .container > p{
+        margin:8px 0;
+     }
+
+     .learner-inner{
+        grid-template-columns: 1fr;
+        gap: 10px;
+     }
+
+     .ready-to-start-section .container > div h2{
+        font-size: 22px;
+     }
+    
+     .ready-to-start-section .container > div p{
+        font-size: 16px;
+        margin: 20px 0;
+     }
+
+     .faq-container{
+
+        width: 100%
+    
+     }
+
+     .faq-quest{
+        font-size: 14px;
+    }
+
+     .faq-ans{
+        font-size: 12px;
+     }
+
+     .top-hiring-section h2{
+        font-size: 14px;
+     }
+     .footer .container p{
+        width: 100%;
+        padding: 10px;
+     }
+
+     .career-section > div:first-child > h1{
+        font-size:20px;
+    }
+}

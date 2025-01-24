@@ -1,0 +1,211 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background-image: linear-gradient(to bottom, #2980b9, #3498db);
+            background-size: cover;
+            overflow: hidden;
+        }
+
+       
+        .bubble ul{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            /* border: 1px solid red; */
+           display: flex;
+            
+        }
+
+        .bubble ul li{
+            position: absolute;
+           bottom: -150%;
+            display: inline-block;
+            animation: animate 4s infinite linear;
+           animation-delay: calc(0.25s * var(--j));
+           opacity: 1;
+           /* animation-duration: calc(5s * var(--j)); */
+
+        }
+        @keyframes animate {
+                
+                100%{
+                    bottom: 750px;
+                    /* opacity: 0; */
+                }
+        }
+        .bubble ul li:nth-child(1){
+            width: 150px;
+            height: 150px;
+            left: 10%;
+            box-shadow: inset 0 0 25px rgba(26, 190, 232, 0.4),
+            inset -5px -10px 35px rgba(255, 255, 255, 0.777); 
+            border-radius: 50%;
+            animation-duration: 15s;
+        }
+       
+        .bubble ul li:nth-child(1)::after{
+            content: '';
+            position: absolute;
+            width: 25%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-98%,-262%) rotateY(146deg) rotateX(317deg);
+            height: 20%;
+            box-shadow:inset 0 0px 25px 10px rgb(255, 255, 255),
+             inset 0px 0px 25px rgba(255, 255, 255, 0.64);
+             filter: blur(3px);
+            border-radius: 50%;
+        }
+        .bubble ul li:nth-child(2){
+            width: 80px;
+            left: 18%;
+            height: 80px;
+            box-shadow: inset 0 0 25px rgba(26, 190, 232, 0.4),
+            inset -5px -10px 35px rgba(255, 255, 255, 0.777); 
+            border-radius: 50%;
+            animation-duration: 5s;
+
+        }
+       
+        .bubble ul li:nth-child(2)::after{
+            content: '';
+            position: absolute;
+            width: 25%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-98%,-262%) rotateY(146deg) rotateX(317deg);
+            height: 20%;
+            box-shadow:inset 0 0px 25px 10px rgb(255, 255, 255),
+             inset 0px 0px 25px rgba(255, 255, 255, 0.777);
+             filter: blur(3px);
+            border-radius: 50%;
+        }
+        .bubble ul li:nth-child(3){
+            width: 120px;
+            left: 30%;
+            height: 120px;
+            box-shadow: inset 0 0 25px rgba(26, 190, 232, 0.4),
+            inset -5px -10px 35px rgba(255, 255, 255, 0.777); 
+            border-radius: 50%;
+            animation-duration: 25s;
+
+        }
+       
+        .bubble ul li:nth-child(3)::after{
+            content: '';
+            position: absolute;
+            width: 25%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-98%,-262%) rotateY(146deg) rotateX(317deg);
+            height: 20%;
+            box-shadow:inset 0 0px 25px 10px rgb(255, 255, 255),
+             inset 0px 0px 25px rgba(255, 255, 255, 0.777);
+             filter: blur(3px);
+            border-radius: 50%;
+        }
+        .bubble ul li:nth-child(4){
+            width: 200px;
+            left: 45%;
+            height: 200px;
+            box-shadow: inset 0 0 25px rgba(26, 190, 232, 0.4),
+            inset -5px -10px 35px rgba(255, 255, 255, 0.777); 
+            border-radius: 50%;
+            animation-duration: 20s;
+
+        }
+       
+        .bubble ul li:nth-child(4)::after{
+            content: '';
+            position: absolute;
+            width: 25%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-98%,-262%) rotateY(146deg) rotateX(317deg);
+            height: 20%;
+            box-shadow:inset 0 0px 25px 10px rgb(255, 255, 255),
+             inset 0px 0px 25px rgba(255, 255, 255, 0.777);
+             filter: blur(5px);
+            border-radius: 50%;
+        }
+        .bubble ul li:nth-child(5){
+            width: 165px;
+            left: 65%;
+            height: 165px;
+            box-shadow: inset 0 0 25px rgba(26, 190, 232, 0.4),
+            inset -5px -10px 35px rgba(255, 255, 255, 0.777); 
+            border-radius: 50%;
+            animation-duration: 14s;
+
+        }
+       
+        .bubble ul li:nth-child(5)::after{
+            content: '';
+            position: absolute;
+            width: 30%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-110%,-180%) rotateX(45deg) rotateY(-20deg) ;
+            height: 30%;
+            box-shadow:inset 0 0px 30px 10px rgb(255, 255, 255),
+             inset 0px 0px 35px rgba(255, 255, 255, 0.777);
+             filter: blur(5px);
+            border-radius: 50%;
+        }
+        .bubble ul li:nth-child(6){
+            width: 55px;
+            left: 85%;
+            height: 55px;
+            box-shadow: inset 0 0 25px rgba(26, 190, 232, 0.4),
+            inset -5px -10px 35px rgba(255, 255, 255, 0.777); 
+            border-radius: 50%;
+            animation-duration: 10s;
+
+        }
+       
+        .bubble ul li:nth-child(6)::after{
+            content: '';
+            position: absolute;
+            width: 25%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-98%,-262%) rotateY(146deg) rotateX(317deg);
+            height: 20%;
+            box-shadow:inset 0 0px 25px 10px rgb(255, 255, 255),
+             inset 0px 0px 25px rgba(255, 255, 255, 0.64);
+             filter: blur(3px);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bubble">
+            <ul>
+                <li style="--j:0"></li>
+                <li style="--j:1"></li>
+                <li style="--j:0"></li>
+                <li style="--j:3"></li>
+                <li style="--j:1"></li>
+                <li style="--j:0"></li>
+
+
+            </ul>
+    </div>
+</body>
+
+</html>
