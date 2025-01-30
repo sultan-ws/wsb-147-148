@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            line-height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>
+        &nbsp;&nbsp;* <br>
+        &nbsp;**<br>
+        ***<br>
+    </div> -->
+    <script>
+        // do{
+        //     console.log('hello')
+        // }
+        // while(4 > 5);
+
+        // let i = 0;
+
+        // while(i <= 10){
+        //     console.log('hello');
+        //     i++;
+        // }
+
+        // for(let i = 1; i <= 5; i++){
+            
+        //     for(let j = 1; j <= 5; j++){
+        //         console.log('hello world')
+        //     }
+
+        // };
+
+        // for(let i = 1; i <= 10; i++){
+        //     for(let j = 1; j <= 10; j++){
+        //         document.write(i * j + ' ');
+        //     };
+        //     document.write('<br>');
+        // }
+
+        // for(let i = 1; i <= 10; i++){
+        //     for(let j= 1; j <= (i * 2) - 1; j++){
+        //         document.write('*');
+        //     }
+        //     document.write('<br>')
+        // }
+
+        let maxRow = 8;
+
+        for(let i = 1; i <= maxRow; i++){
+            for(let s = i; s < maxRow; s++){
+                document.write('&nbsp;');
+            }
+            for(let j = 1; j <= i; j++){
+                document.write('*')
+            };
+            document.write('<br>');
+        }
+    </script>
+</body>
+</html>
