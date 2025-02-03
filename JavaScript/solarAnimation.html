@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes orbit{
+            from{
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to{
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes orbitMoon{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+
+        body{
+            background-color: black
+        }
+
+        li{
+            border: 2px solid white;
+            border-radius: 50%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: orbit 5s linear infinite;
+        }
+
+        .sun{
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            border: none;
+        }
+
+        .mercury{
+            width: 140px;
+            height: 140px;
+            animation-duration: 5s;
+            /* background-color: red; */
+        }
+
+        .mercury::before{
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: red;
+            border-radius: 50%;
+            top: 18px;
+        }
+
+        .earth{
+            width: 250px;
+            height: 250px;
+            animation-duration: 8s;
+        }
+
+        .earth::after{
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: blue;
+            border-radius: 50%;
+            top: 58px;
+        }
+        .earth > div{
+            width: 80px;
+            height: 80px;
+            /* border: 1px solid white; */
+            border-radius: 50%;
+            position: absolute;
+            top: 12%;
+            left: -11%;
+            animation: orbitMoon 2s infinite linear;
+        }
+
+        .earth > div::after{
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;  
+            border-radius: 50%;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="sun"></li>
+        <li class="mercury"></li>
+        <li class="earth">
+            <div></div>
+        </li>
+    </ul>
+</body>
+</html>
