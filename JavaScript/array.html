@@ -74,12 +74,58 @@
 
 
         const arr3 = [22, 43, 67, 11, 9, 30, 50, 90, 92, 42, 3, 25, -11, -99, -4];
-        let ascendingArr = [];
-        // let decendingArr = [];
+        
 
-        //const retrunedValue = arr3.reverse();
+        for(let i = 0; i < arr3.length; i++){
+            for(let j = 0; j < arr3.length - i -1; j++){
+                if(arr3[j] > arr3[j+1]){
+                    let temp = arr3[j];
+                    arr3[j] = arr3[j+1];
+                    arr3[j+1] = temp;
+                }
+            }
+        };
 
-//        console.log(arr3, retrunedValue)
+        console.log(arr3)
+
+
+
+
+
+        const newArr = [20, 20, 20, 20, 20];
+
+        for( let i = 0; i < newArr.length; i++){
+            newArr[i] = newArr[i] + 10;
+        }
+
+        // console.log(newArr);
+
+
+        const newArr1 = [22, 15, 17, 90, 24, 30, 50];
+
+        for(let i = 0; i < newArr1.length; i++){
+            newArr1[i] = newArr1[i] ** 2
+        }
+
+        console.log(newArr1)
+
+
+
+        let n1 = 1;
+        let n2 = 1000;
+
+        let sumOfOddNumbers = 0;
+        let sumOffEvenNumbers = 0;
+
+        for(let i = n1; i <= n2; i++){
+            if(i%2 != 0){
+                sumOfOddNumbers += i;
+            } else {
+                sumOffEvenNumbers += i;
+            }
+        }
+
+        console.log(sumOfOddNumbers, sumOffEvenNumbers);
 
 
     </script>
