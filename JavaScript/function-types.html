@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onDoubleClick="greet2()">click me</button>
+    <script>
+        // named function **
+
+        function greet(name, contact){
+            console.log('hello ' + name, contact);
+        }
+
+        //greet('rohit', 'rohit@main');
+
+        // anonymous function
+
+        const greet2 = function(name, contact){
+            console.log('hello called')
+        };
+
+        //greet2();
+
+        // arrow function **
+
+        const greet3 = ()=>{
+            console.log('object greet3')
+        };
+
+        //greet3();
+
+
+        // self invoked function
+        // (()=>{
+        //     console.log('self')
+        // })();
+
+
+        // constructor function
+        // const user = {
+        //     name: 'rohit',
+        //     age: 25,
+        // }
+
+    //     function User(a, b, c){
+    //         this.name = a,
+    //         this.age = b,
+    //         this.contact = c
+    //     };
+
+    //    const userData = new User('rohit', 20, 'rohit@mail');
+
+    //    //console.log(userData)
+
+
+
+    //    function myFunction( a, b = 15, c, d ){
+    //     console.log(a, b);
+    //    };
+
+    //    myFunction(10, 20);
+
+    //    console.log(myFunction.length);
+
+
+    </script>
+</body>
+</html>

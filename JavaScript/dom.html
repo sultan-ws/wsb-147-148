@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="password" id="passInp" />
+    <button onclick="showPass()">Show</button>
+    <header></header>
+    <main>
+        <div id="r1" class="row1">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="r1" class="row1"></div>
+    </main>
+    <footer></footer>
+
+    <script>
+        // dom selectors
+        // document.getElementById();
+        // document.getElementsByClassName();
+        // document.getEelementsByTagName();
+        // document.querySelector()
+        // document.querySelectorAll();
+
+
+
+        const a = document.getElementById('r1');
+        const b = document.getElementsByClassName('row1');
+        const c = document.getElementsByTagName('div');
+        const d = document.querySelector('.row1');
+        const e = document.querySelectorAll('.row1');
+        const inp = document.getElementById('passInp');
+
+        function showPass() {
+            inp.type = 'text';
+        }
+    </script>
+</body>
+</html>

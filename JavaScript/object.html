@@ -43,11 +43,66 @@
 
         // let obj = ['john', 'wick', 30, 'john@mail.com'];
 
-        let obj = {  lastname: 'wick', age: 30, firstname: 'john', email: 'john@mail.com' };
+        //let obj = {  lastname: 'wick', age: 30, firstname: 'john', email: 'john@mail.com' };
         // obj['age'] = 32
-        obj.age = 32
+        //obj.age = 32
 
-        console.log(obj['firstname'], obj.firstname, obj.age);
+        //console.log(obj['firstname'], obj.firstname, obj.age);
+
+
+        // let user = {  
+        //     lastname: 'wick', 
+        //     age: 30, 
+        //     firstname: 'john', 
+        //     email: 'john@mail.com' 
+        // };
+
+        // const {email, lastname, ...restDetails} = user; // const email = user.email;  const lastname = user.lastname
+        // const userCopy = {...user}
+        // console.log(lastname, email, restDetails, userCopy)
+
+
+        // let user = {  
+        //     lastname: 'wick', 
+        //     age: 30, 
+        //     firstname: 'john', 
+        //     email: 'john@mail.com' 
+        // };
+
+        // const newUser = user;
+
+        // newUser.contact = 1234567890;
+
+        // console.log(user, newUser)
+
+        //  let user = {  
+        //     lastname: 'wick', 
+        //     age: 30, 
+        //     firstname: 'john', 
+        //     email: 'john@mail.com' 
+        // };
+
+        // const newUser = {...user, contact: 1234567890}; // newUser.contact = 1234567890;       
+
+        // console.log(user, newUser)
+
+        const arr = [2, 2, 6, 8, 8, 10];
+        arr.splice(2, 2, 4, 4, 4, 4);
+        const [a, b, ...newArr] = arr;
+        const finalArr = [...newArr, 4, 8, 9];
+
+        // sum of all elements in the finalArr
+
+
+
+
+        const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        const arr2 = arr1.splice(3, 4, 2, 2, 2, 2);
+        const [x, y, ...arr3] = arr2;
+        const lastArr = [...arr3, 1, 2, 3];
+
+        // sum of all elements in the lastArr
+
     </script>
 </body>
 </html>
