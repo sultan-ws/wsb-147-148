@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .divP{
+            display: flex;
+            width: 500px;
+            margin: auto;
+            justify-content: space-between;
+        }
+
+        .divP div{
+            border: 2px solid black;
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="password" id="password-input">
+    <button id="btn" onclick="handlePassword()">Show</button>
+
+    <button onclick="handleDivs()">Handle Divs</button>
+    <ul id="myUl">
+        <li>hello 1</li>
+        <li>hello 2</li>
+        <li>hello 3</li>
+        <li>hello 4</li>
+        <li>hello 5</li>
+        <li>hello 6</li>
+        <li>hello 7</li>
+        <li>hello 8</li>
+        <li>hello 9</li>
+        <li>hello 10</li>
+    </ul>
+
+    <div class="divP" id="myDiv">
+        <div id="d1">
+            Content Of Div 1
+        </div>
+        <div id="d2">
+            Content Of Div 2
+        </div>
+    </div>
+    <script>
+        // innerText
+        const inp = document.getElementById('password-input');
+        const btn = document.getElementById('btn');
+
+
+        function handlePassword() {
+            const buttonText = btn.innerText;
+
+            if (buttonText === 'Show') {
+                inp.type = 'text';
+                btn.innerText = 'Hide';
+            } else {
+                inp.type = 'password';
+                btn.innerText = 'Show';
+            }
+
+        };
+
+
+        // textContent & innerHTML
+        const ul = document.getElementById('myUl');
+
+        console.log(ul.innerText)
+        console.log(ul.textContent);
+        console.log(ul.innerHTML)
+        function handleUl(){}
+
+
+        const d1 = document.getElementById('d1');
+        const d2 = document.getElementById('d2');
+
+        function handleDivs(){
+            let tmp = d2.innerText;
+            d2.innerText = d1.innerText;
+            d1.innerText =tmp;
+        }
+
+
+    </script>
+</body>
+
+</html>
