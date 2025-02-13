@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 500px;
+            margin: auto;
+            border: 4px double black;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 22px;
+            background-color: skyblue;
+        }
+
+        .active{
+            background-color: black;
+            color: skyblue;
+            border-color: skyblue;
+        }
+
+        div{
+            text-align: center;
+        }
+
+        button{
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ex saepe itaque similique! Magnam labore impedit accusamus ipsam unde! Totam quod nemo velit temporibus iusto quam optio similique in dolor.
+    </div>
+    <div>
+        <button onclick="handleAddClass()">Add Class</button>
+        <button onclick="handleRemoveClass()">Remove Class</button>
+        <button onclick="handleToggleClass()"">Toggle Class</button>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+
+        function handleAddClass(){
+            container.classList.add('active');
+        }
+
+        function handleRemoveClass(){
+            container.classList.remove('active');
+        }
+
+        function handleToggleClass(){
+            container.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

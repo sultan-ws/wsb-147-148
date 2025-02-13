@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: whitesmoke;
+        }
+
+        .container {
+            width: 800px;
+            margin: 10px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 4px 4px lightgray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .faq-quest {
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .faq-ans {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            padding: 10px 0;
+            display: none;
+        }
+
+        .active-ans {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Heading</h2>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+        <div class="faq">
+            <div onclick="handleActive(this)" class="faq-quest">
+                Lorem ipsum dolor sit amet, consectetur ?
+            </div>
+            <div class="faq-ans">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolor
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleActive(currentObject) {
+            const currentAns = currentObject.nextElementSibling;
+            currentAns.classList.toggle('active-ans');
+        }
+    </script>
+</body>
+
+</html>
