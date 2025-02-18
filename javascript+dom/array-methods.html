@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [10, 20, 30, 40, 40, 50, 50, 50, 60, 70, 80, 90];
+        // reduce
+       const sum = arr.reduce((acc, current) => acc + current);
+       console.log(sum)
+
+        // map
+
+        // const result = arr.map((value, index)=>{
+        //     return value**2;
+        // });
+        const result = arr.map((value, index)=> value**2);
+       // console.log(result)
+
+       // filter
+
+       const filteredResult = arr.filter((value, index)=> value > 50);
+
+       //console.log(filteredResult)
+
+       
+    </script>
+</body>
+</html>

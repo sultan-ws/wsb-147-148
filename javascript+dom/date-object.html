@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" id="date-inp">
+    <button id="btn">calculate</button>
+    <script>
+        const currentDate = new Date();
+        //console.log(currentDate);
+        // console.log(currentDate.getFullYear());
+        // console.log(currentDate.getDate());
+        // console.log(currentDate.getMonth());
+        // console.log(currentDate.getDay());
+        // console.log(currentDate.toDateString());
+
+        // const newDate = new Date('05-02-2025' + ' ' + '19:30:00');
+        // //console.log(newDate - currentDate)
+
+        // const btn = document.querySelector('#btn');
+        // const inp = document.querySelector('#date-inp');
+
+        // btn.addEventListener('click', ()=>{
+        //     const userDate = inp.value;
+        //     const userDateObj = new Date(userDate);
+        //     const currentDate = new Date();
+
+        //     const diffrence = currentDate - userDateObj;
+
+        //     const year = diffrence * 1000 * 60 * 60 * 24 * 365.25;
+        //     console.log(year)
+        // });
+
+        const time = 100000000000; //milliseconds
+
+        const year = time / (1000 * 60 * 60 * 24 * 365.25);
+        console.log(year);
+
+    </script>
+</body>
+</html>
