@@ -20,25 +20,31 @@
         // const newDate = new Date('05-02-2025' + ' ' + '19:30:00');
         // //console.log(newDate - currentDate)
 
-        // const btn = document.querySelector('#btn');
-        // const inp = document.querySelector('#date-inp');
+        const btn = document.querySelector('#btn');
+        const inp = document.querySelector('#date-inp');
 
-        // btn.addEventListener('click', ()=>{
-        //     const userDate = inp.value;
-        //     const userDateObj = new Date(userDate);
-        //     const currentDate = new Date();
+        btn.addEventListener('click', ()=>{
+            const userDate = inp.value;
+            const userDateObj = new Date(userDate);
+            const currentDate = new Date();
 
-        //     const diffrence = currentDate - userDateObj;
+            const diffrence = currentDate - userDateObj;
 
-        //     const year = diffrence * 1000 * 60 * 60 * 24 * 365.25;
-        //     console.log(year)
-        // });
+            const year = Math.floor(diffrence / (1000 * 60 * 60 * 24 * 365.25));       
+            const months = Math.floor((diffrence % (1000 * 60 * 60 * 24 * 365.25)) / (1000*60*60*24*30));
+            const days = Math.floor((diffrence % (1000*60*60*24*30)) / (1000 * 60 * 60* 24));
 
-        const time = 100000000000; //milliseconds
+            console.log(year + ' years ', months + ' months ', days + ' days ');
+        });
 
-        const year = time / (1000 * 60 * 60 * 24 * 365.25);
-        console.log(year);
+        // const time = 100000000000; //milliseconds
 
+        // const year = Math.floor(time / (1000 * 60 * 60 * 24 * 365.25));
+        
+        // const months = Math.floor((time % (1000 * 60 * 60 * 24 * 365.25)) / (1000*60*60*24*30));
+        // const days = Math.floor((time % (1000*60*60*24*30)) / (1000 * 60 * 60* 24));
+
+        // console.log(year, months, days)
     </script>
 </body>
 </html>

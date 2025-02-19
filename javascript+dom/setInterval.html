@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .contaiuner{
+            width: 500px;
+            background-color: white;
+            border-radius: 10px;
+            margin:20px auto;
+            text-align: center;
+            padding: 10px;
+        }
+        .contaiuner button{
+            padding: 10px 30px;
+            margin: 0 5px;
+            border-radius: 6px;
+            background-color: grey;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .time-container{
+            padding: 30px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="contaiuner">
+        <div class="time-container">
+            00 : 00 : 00
+        </div>
+        <div>
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="stopTimer()">Stop</button>
+        </div>
+    </div>
+    <script>
+        let interval;
+        let counter = 0;
+
+        const container = document.querySelector('.time-container');
+
+        const startTimer = ()=>{
+            interval = setInterval(()=>{
+                let hours = Math.floor( counter / ( 60 * 60));
+                let minutes = Math.floor((counter % ( 60*60)) / (60));
+                let seconds = counter % 60;
+
+
+                hours = (hours < 10) ? '0' + hours : hours;
+                minutes = (minutes < 10) ? '0' + minutes : minutes;
+                seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+                // container.innerText = hours + ' ' + minutes + ' ' + seconds;
+                container.innerHTML = `${hours} : ${minutes} : ${seconds}`;
+
+                counter++;
+            }, 1000);
+        };
+
+        const pauseTimer = ()=>{
+            clearInterval(interval)
+        }
+
+        const stopTimer = ()=>{
+            clearInterval(interval);
+            counter = 0;
+            container.innerHTML = '00 : 00 : 00';
+        }
+       
+    </script>
+</body>
+</html>

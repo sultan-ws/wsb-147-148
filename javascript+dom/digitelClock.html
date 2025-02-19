@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        .contaiuner {
+            width: 500px;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: skyblue;
+        }
+
+        .contaiuner button {
+            padding: 10px 30px;
+            margin: 0 5px;
+            border-radius: 6px;
+            background-color: grey;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .time-container {
+            padding: 30px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contaiuner">
+        <div class="time-container">
+
+        </div>
+        <div class="date-container">
+
+        </div>
+    </div>
+    <script>
+        const dateContainer = document.querySelector('.date-container');
+        const timeContainer = document.querySelector('.time-container');
+
+        const timer = () => {
+            const currentDate = new Date();
+            let hours = currentDate.getHours();
+            let minutes = currentDate.getMinutes();
+            let seconds = currentDate.getSeconds();
+            let amPm = (hours > 12) ? 'PM' : 'AM';
+            
+            hours = ( hours > 12) ? hours - 12 : hours;
+
+            hours = ( hours < 10) ? '0' + hours : hours;
+            minutes = ( minutes < 10) ? '0' + minutes : minutes;
+            seconds = ( seconds < 10) ? '0' + seconds : seconds;
+
+            const date = currentDate.toDateString();
+            timeContainer.innerText = `${hours} : ${minutes} : ${seconds} : ${amPm}`;
+            dateContainer.innerText = date
+        }
+
+        timer();
+        setInterval(timer, 1000)
+
+    </script>
+</body>
+
+</html>
