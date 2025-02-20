@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        body{
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .clock{
+            width: 200px;
+            height: 200px;
+            border: 4px double black;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .clock > ul > li{
+            position: absolute;
+            width: 1px;
+            background-color: black;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform-origin: center;
+        }
+
+        .inner{
+            width: 180px;
+            height: 180px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .inner > ul > li{
+            position: absolute;
+        }
+
+        .inner > ul > li:nth-child(12){
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .inner > ul > li:nth-child(6){
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .inner > ul > li:nth-child(3){
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .inner > ul > li:nth-child(9){
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .seconds-hand{
+            width: 2px;
+            background-color: red;
+            height: 80px;
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: bottom;
+        }
+
+        .minutes-hand{
+            width: 3px;
+            background-color: black;
+            height: 60px;
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: bottom;
+        }
+
+        .hours-hand{
+            width: 4px;
+            background-color: yellow;
+            height: 50px;
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="inner">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+            </ul>
+
+            <div class="seconds-hand"></div>
+            <div class="minutes-hand"></div>
+            <div class="hours-hand"></div>
+        </div>
+    </div>
+
+    <script>
+        const secondsHand = document.querySelector('.seconds-hand');
+        const minutesHand = document.querySelector('.minutes-hand');
+        const hoursHand = document.querySelector('.hours-hand');
+
+        const lis = document.querySelectorAll('.clock > ul > li');
+        let angle = 0;
+        lis.forEach((li, index)=>{
+            li.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+            angle += 30;
+        })
+
+        const handleClock = ()=>{
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            secondsHand.style.transform = `translateX(-50%) rotate(${6 * seconds}deg)`;
+            minutesHand.style.transform = `translateX(-50%) rotate(${6 * minutes}deg)`;
+            hoursHand.style.transform = `translateX(-50%) rotate(${(30 * hours) + (0.5 * minutes)}deg)`;
+        };
+
+        handleClock();
+        setInterval(handleClock, 1000);
+    </script>
+</body>
+</html>
