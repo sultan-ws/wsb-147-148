@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .pop-up-container{
+            position: fixed;
+            width: 500px;
+            height: 350px;
+            background-color: wheat;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.2s;
+        }
+
+
+        .close{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="pop-up-container">
+        <span class="close">&times;</span>
+    </div>
+    <button class="show-model">Show</button>
+
+    <script>
+        const showModel = document.querySelector('.show-model');
+        const popUp = document.querySelector('.pop-up-container');
+        const closeBtn = document.querySelector('.close');
+
+        showModel.addEventListener('click', ()=>{
+            popUp.style.top = '50%'
+        });
+
+        closeBtn.addEventListener('click', ()=>{
+            popUp.style.top = '-50%'
+        })
+
+        setTimeout(()=>{popUp.style.top = '50%'}, 5000)
+    </script>
+</body>
+</html>

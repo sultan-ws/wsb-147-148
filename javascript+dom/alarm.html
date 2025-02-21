@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="time" id="timeInp">
+    <input type="date" id="dateInp">
+    <button id="setAlarm">Set Alarm</button>
+    <button id="resetBtn">Reset Alarm</button>
+    <button id="snoozAlarm">Snooz Alarm</button>
+    <button id="stopAlarm">Stop Alarm</button>
+    <script>
+        const audio = new Audio('./audio/sample-12s.mp3');
+
+        const timeInp = document.querySelector('#timeInp');
+        const dateInp = document.querySelector('#dateInp');
+        const setAlarmBtn = document.querySelector('#setAlarm');
+        const resetBtn = document.querySelector('#resetBtn');
+        const snoozAlarm = document.querySelector('#snoozAlarm');
+        const stopAlarm = document.querySelector('#stopAlarm');
+
+        let timeOutId;
+
+        const playAlaram = ()=>{
+            audio.play();
+        }
+
+        const handleSetAlarm = ()=>{
+            let alarmTime = timeInp.value;
+            let date = dateInp.value;
+
+            const currentTime = new Date();
+
+            if(!alarmTime || !date) return alert('Please select a time');
+            alarmTime = new Date(date + ' ' + alarmTime);
+
+            const difference = alarmTime - currentTime;
+
+            if(difference < 0) return alert('Please select a valid time or date');
+
+            timeOutId = setTimeout(playAlaram, difference);
+            setAlarmBtn.style.display = 'none';
+            
+        }
+
+        setAlarmBtn.addEventListener('click', handleSetAlarm);
+        resetBtn.addEventListener('click', ()=>{
+            clearTimeout(timeOutId);
+            timeInp.value = '';
+            dateInp.value = '';
+        });
+
+        snoozAlarm.addEventListener('click', ()=>{
+            audio.pause();
+            audio.currentTime = 0;
+
+            timeOutId = setTimeout(playAlaram, 10000);
+            
+        })
+
+        stopAlarm.addEventListener('click', ()=>{
+            audio.pause();
+            audio.currentTime = 0;
+            clearTimeout(timeOutId);
+        })
+    </script>
+</body>
+</html>
