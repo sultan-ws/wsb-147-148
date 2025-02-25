@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 9fr;
+        }
+
+        .sidebar {
+            /* border: 10px solid red; */
+        }
+
+        .products {
+            /* border: 10px solid yellow; */
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .card {
+            box-shadow: 0 0 6px 3px grey;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .card-body p:nth-child(2) {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+
+        img {
+            width: 100%;
+        }
+
+        .card-body h4 {
+            margin: 10px 0;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .card-body p:nth-child(3) {
+            text-align: justify;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar"></div>
+        <div class="products">
+            <!-- <div class="card">
+                <div class="thumbnail">
+                    <img src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png" alt="">
+                </div>
+                <div class="card-body">
+                    <h4>Essence Mascara Lash Princess</h4>
+                    <p>
+                        <span>₹ 599 <span>(5% Off)</span></span>
+                        <span>4.94 Rating</span>
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim eaque qui deserunt voluptatem, sapiente veritatis. Sunt, incidunt deserunt et, repellendus mollitia nisi repudiandae libero quis nam esse saepe magni.
+                    </p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <script>
+        const productContainer = document.querySelector('.products');
+
+        let limit = 194;
+        let skip = 0;
+        const api = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
+
+        const showProducts = (products) => {
+            console.log('products=>', products)
+
+            let data = '';
+
+            products.map((v, i) => {
+                console.log(v)
+                data += `<div class="card">
+                <div class="thumbnail">
+                    <img src="${v.thumbnail}" alt="">
+                </div>
+                <div class="card-body">
+                    <h4>${v.title}</h4>
+                    <p>
+                        <span>₹ ${v.price} <span>(${v.discountPercentage}% Off)</span></span>
+                        <span>${v.rating} Rating</span>
+                    </p>
+                    <p>
+                        ${v.description}
+                    </p>
+                </div>
+            </div>`;
+            });
+
+            productContainer.innerHTML = data;
+
+        }
+
+
+        const fetchProducts = async () => {
+            const response = await fetch(api);
+            const data = await response.json();
+            showProducts(data.products);
+        }
+
+        fetchProducts();
+
+
+    </script>
+</body>
+
+</html>
