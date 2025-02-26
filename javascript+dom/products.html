@@ -22,7 +22,7 @@
             /* border: 10px solid red; */
         }
 
-        .products {
+        .card-container {
             /* border: 10px solid yellow; */
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -59,6 +59,33 @@
             font-size: 18px;
             font-weight: 500;
         }
+
+        .pagination{
+            margin: 40px 0;
+            text-align: center;
+        }
+        .pagination button{
+            padding: 10px;
+            border: none;
+            background-color: black;
+            border: 2px solid black;
+            border-radius: 4px;
+            color: white;
+            font-weight: 700;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .pagination button:hover{
+            background-color: white;
+            color: black;
+        }
+
+        .active-page{
+            background-color: white !important;
+            color: black !important;
+        }
     </style>
 </head>
 
@@ -66,38 +93,24 @@
     <div class="container">
         <div class="sidebar"></div>
         <div class="products">
-            <!-- <div class="card">
-                <div class="thumbnail">
-                    <img src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png" alt="">
-                </div>
-                <div class="card-body">
-                    <h4>Essence Mascara Lash Princess</h4>
-                    <p>
-                        <span>₹ 599 <span>(5% Off)</span></span>
-                        <span>4.94 Rating</span>
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim eaque qui deserunt voluptatem, sapiente veritatis. Sunt, incidunt deserunt et, repellendus mollitia nisi repudiandae libero quis nam esse saepe magni.
-                    </p>
-                </div>
-            </div> -->
+            <div class="card-container"></div>
+            <div class="pagination"></div>      
         </div>
     </div>
 
     <script>
-        const productContainer = document.querySelector('.products');
+        const productContainer = document.querySelector('.card-container');
+        const pagination = document.querySelector('.pagination');
 
-        let limit = 194;
-        let skip = 0;
-        const api = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
+        let page = 1;
+        let limit = 20;
+        let totalPages = 0;
+        let skip = (page - 1) * limit;
 
         const showProducts = (products) => {
-            console.log('products=>', products)
-
             let data = '';
 
             products.map((v, i) => {
-                console.log(v)
                 data += `<div class="card">
                 <div class="thumbnail">
                     <img src="${v.thumbnail}" alt="">
@@ -119,14 +132,45 @@
 
         }
 
+        const createPagination = ()=>{
+           
+            let data = '<button>First</button>';
+            data += '<button>Prev</button>';
+            for(let i = 1; i <= totalPages; i++){
+                if(i === page){
+                    data += `<button onClick="handlePagination(${i})" class="active-page">${i}</button>`;
+                } else {
+                    data += `<button onClick="handlePagination(${i})">${i}</button>`
+                }
+                
+            }
+
+            data += '<button>Next</button>';
+            data += '<button>Last</button>';
+
+            pagination.innerHTML = data;
+        };
+
 
         const fetchProducts = async () => {
+            const api = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
             const response = await fetch(api);
             const data = await response.json();
             showProducts(data.products);
+            totalPages = Math.ceil(data.total / limit);
+            createPagination();
+
+            console.log(data)
         }
 
         fetchProducts();
+
+        const handlePagination =(pageNo)=>{
+            console.log(pageNo)
+            page = pageNo;
+            skip = (pageNo - 1) * limit;
+            fetchProducts();
+        }
 
 
     </script>
