@@ -60,11 +60,17 @@
             font-weight: 500;
         }
 
-        .pagination{
+        .products{
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .pagination {
             margin: 40px 0;
             text-align: center;
         }
-        .pagination button{
+
+        .pagination button {
             padding: 10px;
             border: none;
             background-color: black;
@@ -77,35 +83,69 @@
             transition: 0.2s;
         }
 
-        .pagination button:hover{
+        .pagination button:hover {
             background-color: white;
             color: black;
         }
 
-        .active-page{
+        .active-page {
             background-color: white !important;
             color: black !important;
+        }
+        .categories{
+            margin-top: 100px;
+        }
+        .categories ul{
+            padding: 10px;
+        }
+
+        .categories ul li{
+            padding: 5px;
+            background-color: olive;
+            border: 1px solid olive;
+            margin: 2px 0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .categories ul li:hover{
+            background-color: white !important;
+            color: olive !important;
+        }
+
+        .checkedCategory{
+            background-color: white !important;
+            color: olive !important;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="sidebar"></div>
+        <div class="sidebar">
+            <div class="categories">
+                <h3>Category</h3>
+                <ul>
+                    
+                </ul>
+            </div>
+        </div>
         <div class="products">
             <div class="card-container"></div>
-            <div class="pagination"></div>      
+            <div class="pagination"></div>
         </div>
     </div>
 
     <script>
         const productContainer = document.querySelector('.card-container');
         const pagination = document.querySelector('.pagination');
+        const categoriesContainer = document.querySelector('.categories ul');
 
         let page = 1;
         let limit = 20;
         let totalPages = 0;
         let skip = (page - 1) * limit;
+        let currentCategory = 'all';
 
         const showProducts = (products) => {
             let data = '';
@@ -132,21 +172,24 @@
 
         }
 
-        const createPagination = ()=>{
-           
-            let data = '<button>First</button>';
-            data += '<button>Prev</button>';
-            for(let i = 1; i <= totalPages; i++){
-                if(i === page){
-                    data += `<button onClick="handlePagination(${i})" class="active-page">${i}</button>`;
-                } else {
-                    data += `<button onClick="handlePagination(${i})">${i}</button>`
+        const createPagination = () => {
+
+            let data = `<button onClick="handlePagination(1)" disabled="${page <= 1}">First</button>`;
+            data += `<button onClick="handlePagination(${page - 1})" disabled="${page <= 1}">Prev</button>`;
+            if(page > 4) data += '....'
+            for (let i = 1; i <= totalPages; i++) {
+                if (i >= page - 3 && i <= page + 3) {
+                    if (i === page) {
+                        data += `<button onClick="handlePagination(${i})" class="active-page">${i}</button>`;
+                    } else {
+                        data += `<button onClick="handlePagination(${i})">${i}</button>`
+                    }
                 }
-                
+
             }
 
-            data += '<button>Next</button>';
-            data += '<button>Last</button>';
+            data += `<button onClick="handlePagination(${page - 1})" disabled="${page >= totalPages}">Next</button>`;
+            data += `<button onClick="handlePagination(${totalPages})" disabled="${page >= totalPages}">Last</button>`;
 
             pagination.innerHTML = data;
         };
@@ -165,13 +208,46 @@
 
         fetchProducts();
 
-        const handlePagination =(pageNo)=>{
+        const handlePagination = (pageNo) => {
             console.log(pageNo)
             page = pageNo;
             skip = (pageNo - 1) * limit;
             fetchProducts();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
         }
 
+        const handleCategoryChange = (slug)=>{
+            console.log(slug)
+            currentCategory = slug;
+        }
+
+        const fetchCategories = async()=>{
+            const response = await fetch('https://dummyjson.com/products/categories');
+            const data = await response.json();
+
+            console.log(data)
+            
+            let categoryString = `<li class="${(currentCategory === 'all') ? 'checkedCategory' : ''}">
+                        <span>All</span>
+                    </li>`;
+
+            data.map((category, index)=>{
+                categoryString += `<li 
+                onClick="handleCategoryChange(${category.slug})"
+                class="${(currentCategory === category.slug) ? 'checkedCategory' : ''}">
+                        <span>${category.name}</span>
+                    </li>`;
+            })
+
+            categoriesContainer.innerHTML = categoryString;
+        }
+
+        fetchCategories();
+
+        
 
     </script>
 </body>
