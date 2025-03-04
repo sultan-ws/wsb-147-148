@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.wrapper{
+			max-width: 1000px;
+			margin: auto;
+			box-shadow: 0 0 10px 8px #00000012;
+			padding: 10px;
+			min-height: 100vh;
+		}
+		.scroll-tab-container{
+			background: black;	
+			margin: 16px auto;
+			border-radius: 4px;
+			font-family: sans-serif;
+			overflow: hidden;
+			position: relative;
+		}
+		.scroll-tab-container svg{
+			width: 24px;
+			height: 24px;
+			padding: 8px;
+			cursor: pointer;
+			color: white;
+			transition: 0.2s;
+			pointer-events: auto;
+		}
+		.scroll-tab-container ul{
+			display: flex;
+			gap: 16px;
+			padding: 12px 24px;
+			margin: 0;
+			list-style: none;
+			overflow-x: scroll;
+			-ms-overflow-style:none;
+			scrollbar-width: none;
+			scroll-behavior: smooth;
+		}
+		.scroll-tab-container ul::-webkit-scrollbar{
+			display: none;
+		}
+		.scroll-tab-container ul.dragging{
+			scroll-behavior: auto;
+		}
+
+		.scroll-tab-container ul.dragging a{
+			pointer-events: none;
+		}
+
+		.scroll-tab-container a{
+			color: #fff;
+			text-decoration: none;
+			background: #333; /*grey color */
+			padding: 4px 24px;
+			display: inline-block;
+			border-radius: 4px;
+			user-select: none;
+			white-space: nowrap;
+		}
+
+		.scroll-tab-container a.active{
+			background: #fff;
+			color: black;
+		}
+		.scroll-tab-container .left-arrow,
+		.scroll-tab-container .right-arrow{
+			position: absolute;
+			height: 100%;
+			width: 100px;
+			top: 0;
+			display: none;
+			align-items: center;
+			padding: 0 10px;
+			pointer-events: none;
+		}
+		.scroll-tab-container .right-arrow{
+			right: 0;
+			justify-content: flex-end;
+			background: linear-gradient(to left, #000 50%,transparent);
+		}
+		.scroll-tab-container .left-arrow{
+			background: linear-gradient(to right, #000 50%,transparent);
+		}
+
+		.scroll-tab-container svg:hover{
+			background: #333;
+			border-radius: 50%;
+		}
+
+		.scroll-tab-container .left-arrow.active,
+		.scroll-tab-container .right-arrow.active{
+			display: flex;
+		}
+
+		.tab-body{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 5px;
+		}
+
+		.tab-body > div{
+			height: 300px;
+		}
+
+		.tab-body img{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="wrapper">
+		<div class="scroll-tab-container">
+			<div class="left-arrow">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+				</svg>
+
+			</div>
+			<ul>
+				<li>
+					<a href="#" class="active">Nature</a>
+				</li>
+				<li>
+					<a href="#">Books</a>
+				</li>
+				<li>
+					<a href="#">Forest</a>
+				</li>
+				<li>
+					<a href="#">Rivers</a>
+				</li>
+				<li>
+					<a href="#">Waterfalls</a>
+				</li>
+				<li>
+					<a href="#">Lights</a>
+				</li>
+				<li>
+					<a href="#">Mountains</a>
+				</li>
+				<li>
+					<a href="#">Animals</a>
+				</li>
+				<li>
+					<a href="#">Art</a>
+				</li>
+				<li>
+					<a href="#">History</a>
+				</li>
+				<li>
+					<a href="#">Music</a>
+				</li>
+				<li>
+					<a href="#">Space</a>
+				</li>
+				<li>
+					<a href="#">Technology</a>
+				</li>
+				<li>
+					<a href="#">Science</a>
+				</li>
+				<li>
+					<a href="#">Travel</a>
+				</li>
+			</ul>
+
+			<div class="right-arrow active">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+				</svg>
+
+			</div>
+		</div>
+		<div class="tab-body">
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	const tabs = document.querySelectorAll('.scroll-tab-container a');
+	const rightArrow = document.querySelector('.scroll-tab-container .right-arrow svg');
+	const leftArrow = document.querySelector('.scroll-tab-container .left-arrow svg');
+	
+	const tabList = document.querySelector('.scroll-tab-container ul');
+
+	const rightArrowContainer = document.querySelector('.scroll-tab-container .right-arrow');
+	const leftArrowContainer = document.querySelector('.scroll-tab-container .left-arrow');
+
+	const removeAllActiveTab = ()=>{
+		tabs.forEach((tab)=>{
+			tab.classList.remove('active');
+		})
+	};
+
+	tabs.forEach((tab)=>{
+		
+		tab.addEventListener('click',()=>{
+			removeAllActiveTab();
+			tab.classList.add('active');
+		})
+	})
+
+	const manageIcons = ()=>{
+		if(tabList.scrollLeft >= 20)
+		{
+			leftArrowContainer.classList.add('active');
+		}
+		else
+		{
+			leftArrowContainer.classList.remove('active');
+		}
+
+		let maxScrollValue = tabList.scrollWidth - tabList.clientWidth - 20;
+		//console.log(tabList.scrollWidth, tabList.clientWidth);
+
+		if(tabList.scrollLeft >= maxScrollValue)
+		{
+			rightArrowContainer.classList.remove('active');
+		}
+		else
+		{
+			rightArrowContainer.classList.add('active');
+		}
+	}
+
+	rightArrow.addEventListener('click',()=>{
+		tabList.scrollLeft += 200;
+		manageIcons();
+	});
+
+	leftArrow.addEventListener('click',()=>{
+		tabList.scrollLeft -= 200;
+		manageIcons();
+	});
+
+	tabList.addEventListener('scroll',()=>{
+		manageIcons();
+	});
+
+	tabList.addEventListener('wheel',(event)=>{
+		// Adjust the scrollLeft based on the wheel delta
+		tabList.scrollLeft += event.deltaY;
+    // Prevent the default behavior to avoid page scrolling
+		event.preventDefault();
+		manageIcons();
+	});
+
+
+	let dragging = false;
+	const drag = (e)=>{
+		if (!dragging) return;
+
+		tabList.classList.add('dragging');
+		tabList.scrollLeft -= e.movementX;
+	}
+
+	tabList.addEventListener('mousedown',()=>{
+		dragging = true;
+	});
+
+	tabList.addEventListener('mousemove', drag);
+
+	tabList.addEventListener('mouseup',()=>{
+		dragging = false;
+		tabList.classList.remove('dragging');
+	})
+
+
+
+
+	const tabBody = document.querySelector('.tab-body');
+
+	const allTabs = document.querySelectorAll('.scroll-tab-container > ul > li');
+
+	allTabs.forEach((li,i)=>{
+		li.addEventListener('click',()=>{
+			showData(i);
+		})
+	})
+
+
+
+	
+
+	const imageSegments = [
+  
+  [
+    "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg",
+    "https://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeg",
+    "https://images.pexels.com/photos/15286/pexels-photo.jpg",
+    "https://images.pexels.com/photos/1366909/pexels-photo-1366909.jpeg",
+    "https://images.pexels.com/photos/707344/pexels-photo-707344.jpeg",
+    "https://images.pexels.com/photos/1820563/pexels-photo-1820563.jpeg",
+    "https://images.pexels.com/photos/733860/pexels-photo-733860.jpeg",
+    "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg",
+    "https://images.pexels.com/photos/2086622/pexels-photo-2086622.jpeg",
+    "https://images.pexels.com/photos/234272/pexels-photo-234272.jpeg",
+    "https://images.pexels.com/photos/2189696/pexels-photo-2189696.jpeg",
+    "https://images.pexels.com/photos/772803/pexels-photo-772803.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/4132936/pexels-photo-4132936.png",
+    "https://images.pexels.com/photos/5084674/pexels-photo-5084674.jpeg",
+    "https://images.pexels.com/photos/5530604/pexels-photo-5530604.jpeg",
+    "https://images.pexels.com/photos/922100/pexels-photo-922100.png",
+    "https://images.pexels.com/photos/4058794/pexels-photo-4058794.jpeg",
+    "https://images.pexels.com/photos/4058797/pexels-photo-4058797.jpeg",
+    "https://images.pexels.com/photos/5331071/pexels-photo-5331071.jpeg",
+    "https://images.pexels.com/photos/5331074/pexels-photo-5331074.jpeg",
+    "https://images.pexels.com/photos/4865603/pexels-photo-4865603.jpeg",
+    "https://images.pexels.com/photos/4581325/pexels-photo-4581325.jpeg",
+    "https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg",
+    "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg",
+    "https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg",
+    "https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg",
+    "https://images.pexels.com/photos/142497/pexels-photo-142497.jpeg",
+    "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg",
+    "https://images.pexels.com/photos/418831/pexels-photo-418831.jpeg",
+    "https://images.pexels.com/photos/9754/mountains-clouds-forest-fog.jpg",
+    "https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg",
+    "https://images.pexels.com/photos/338936/pexels-photo-338936.jpeg",
+    "https://images.pexels.com/photos/1423600/pexels-photo-1423600.jpeg",
+    "https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg",
+    "https://images.pexels.com/photos/113338/pexels-photo-113338.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/1179225/pexels-photo-1179225.jpeg",
+    "https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg",
+    "https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg",
+    "https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg",
+    "https://images.pexels.com/photos/3656989/pexels-photo-3656989.jpeg",
+    "https://images.pexels.com/photos/355288/pexels-photo-355288.jpeg",
+    "https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg",
+    "https://images.pexels.com/photos/1766838/pexels-photo-1766838.jpeg",
+    "https://images.pexels.com/photos/2178175/pexels-photo-2178175.jpeg",
+    "https://images.pexels.com/photos/2150347/pexels-photo-2150347.jpeg",
+    "https://images.pexels.com/photos/2166695/pexels-photo-2166695.jpeg",
+    "https://images.pexels.com/photos/1629803/pexels-photo-1629803.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/358457/pexels-photo-358457.jpeg",
+    "https://images.pexels.com/photos/1875480/pexels-photo-1875480.jpeg",
+    "https://images.pexels.com/photos/62627/niagara-cases-water-waterfall-62627.jpeg",
+    "https://images.pexels.com/photos/949194/pexels-photo-949194.jpeg",
+    "https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg",
+    "https://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeg",
+    "https://images.pexels.com/photos/2406395/pexels-photo-2406395.jpeg",
+    "https://images.pexels.com/photos/414061/pexels-photo-414061.jpeg",
+    "https://images.pexels.com/photos/327394/pexels-photo-327394.jpeg",
+    "https://images.pexels.com/photos/954929/pexels-photo-954929.jpeg",
+    "https://images.pexels.com/photos/1080421/pexels-photo-1080421.jpeg",
+    "https://images.pexels.com/photos/931007/pexels-photo-931007.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/1124960/pexels-photo-1124960.jpeg",
+    "https://images.pexels.com/photos/220118/pexels-photo-220118.jpeg",
+    "https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg",
+    "https://images.pexels.com/photos/567985/pexels-photo-567985.jpeg",
+    "https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg",
+    "https://images.pexels.com/photos/247737/pexels-photo-247737.jpeg",
+    "https://images.pexels.com/photos/963436/pexels-photo-963436.jpeg",
+    "https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg",
+    "https://images.pexels.com/photos/754262/pexels-photo-754262.jpeg",
+    "https://images.pexels.com/photos/301673/pexels-photo-301673.jpeg",
+    "https://images.pexels.com/photos/431722/pexels-photo-431722.jpeg",
+    "https://images.pexels.com/photos/1146562/pexels-photo-1146562.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg",
+    "https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg",
+    "https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg",
+    "https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg",
+    "https://images.pexels.com/photos/1670187/pexels-photo-1670187.jpeg",
+    "https://images.pexels.com/photos/355747/pexels-photo-355747.jpeg",
+    "https://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeg",
+    "https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg",
+    "https://images.pexels.com/photos/1366909/pexels-photo-1366909.jpeg",
+    "https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg",
+    "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg",
+    "https://images.pexels.com/photos/869258/pexels-photo-869258.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg",
+    "https://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg",
+    "https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg",
+    "https://images.pexels.com/photos/34098/south-africa-hluhluwe-giraffes-pattern.jpg",
+    "https://images.pexels.com/photos/792381/pexels-photo-792381.jpeg",
+    "https://images.pexels.com/photos/37833/rainbow-lorikeet-parrots-australia-rainbow-37833.jpeg",
+    "https://images.pexels.com/photos/62289/yemen-chameleon-chamaeleo-calyptratus-chameleon-reptile-62289.jpeg",
+    "https://images.pexels.com/photos/814898/pexels-photo-814898.jpeg",
+    "https://images.pexels.com/photos/288621/pexels-photo-288621.jpeg",
+    "https://images.pexels.com/photos/247376/pexels-photo-247376.jpeg",
+    "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg",
+    "https://images.pexels.com/photos/52500/horse-herd-fog-nature-52500.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/3246665/pexels-photo-3246665.png",
+    "https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg",
+    "https://images.pexels.com/photos/1193743/pexels-photo-1193743.jpeg",
+    "https://images.pexels.com/photos/962312/pexels-photo-962312.jpeg",
+    "https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg",
+    "https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg",
+    "https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg",
+    "https://images.pexels.com/photos/1570264/pexels-photo-1570264.jpeg",
+    "https://images.pexels.com/photos/1209843/pexels-photo-1209843.jpeg",
+    "https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg",
+    "https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg",
+    "https://images.pexels.com/photos/889839/pexels-photo-889839.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/36006/renaissance-schallaburg-figures-facade.jpg",
+    "https://images.pexels.com/photos/1172018/pexels-photo-1172018.jpeg",
+    "https://images.pexels.com/photos/820735/pexels-photo-820735.jpeg",
+    "https://images.pexels.com/photos/951531/pexels-photo-951531.jpeg",
+    "https://images.pexels.com/photos/135018/pexels-photo-135018.jpeg",
+    "https://images.pexels.com/photos/2952871/pexels-photo-2952871.jpeg",
+    "https://images.pexels.com/photos/208674/pexels-photo-208674.jpeg",
+    "https://images.pexels.com/photos/161798/stonehenge-architecture-history-monolith-161798.jpeg",
+    "https://images.pexels.com/photos/73821/train-wreck-steam-locomotive-locomotive-railway-73821.jpeg",
+    "https://images.pexels.com/photos/2402926/pexels-photo-2402926.jpeg",
+    "https://images.pexels.com/photos/161863/edinburgh-carlton-hill-landscape-scotland-161863.jpeg",
+    "https://images.pexels.com/photos/355188/pexels-photo-355188.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg",
+    "https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg",
+    "https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg",
+    "https://images.pexels.com/photos/1010519/pexels-photo-1010519.jpeg",
+    "https://images.pexels.com/photos/164821/pexels-photo-164821.jpeg",
+    "https://images.pexels.com/photos/63703/pexels-photo-63703.jpeg",
+    "https://images.pexels.com/photos/144429/pexels-photo-144429.jpeg",
+    "https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg",
+    "https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg",
+    "https://images.pexels.com/photos/1876279/pexels-photo-1876279.jpeg",
+    "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg",
+    "https://images.pexels.com/photos/934067/pexels-photo-934067.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg",
+    "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg",
+    "https://images.pexels.com/photos/41162/moon-landing-apollo-11-nasa-buzz-aldrin-41162.jpeg",
+    "https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg",
+    "https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg",
+    "https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg",
+    "https://images.pexels.com/photos/87009/earth-soil-creep-moon-lunar-surface-87009.jpeg",
+    "https://images.pexels.com/photos/816608/pexels-photo-816608.jpeg",
+    "https://images.pexels.com/photos/41951/solar-system-emergence-spitzer-telescope-telescope-41951.jpeg",
+    "https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg",
+    "https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg",
+    "https://images.pexels.com/photos/796206/pexels-photo-796206.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    "https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg",
+    "https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg",
+    "https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg",
+    "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg",
+    "https://images.pexels.com/photos/919734/pexels-photo-919734.jpeg",
+    "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
+    "https://images.pexels.com/photos/7974/pexels-photo.jpg",
+    "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg",
+    "https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg",
+    "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg",
+    "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg",
+    "https://images.pexels.com/photos/132477/pexels-photo-132477.jpeg",
+    "https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg",
+    "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg",
+    "https://images.pexels.com/photos/60582/newton-s-cradle-balls-sphere-action-60582.jpeg",
+    "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg",
+    "https://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeg",
+    "https://images.pexels.com/photos/954585/pexels-photo-954585.jpeg",
+    "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg",
+    "https://images.pexels.com/photos/220989/pexels-photo-220989.jpeg",
+    "https://images.pexels.com/photos/2156/sky-earth-space-working.jpg",
+    "https://images.pexels.com/photos/2280547/pexels-photo-2280547.jpeg"
+  ],
+  [
+    "https://images.pexels.com/photos/2245436/pexels-photo-2245436.png",
+    "https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg",
+    "https://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeg",
+    "https://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeg",
+    "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg",
+    "https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg",
+    "https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg",
+    "https://images.pexels.com/photos/1051073/pexels-photo-1051073.jpeg",
+    "https://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeg",
+    "https://images.pexels.com/photos/2087391/pexels-photo-2087391.jpeg",
+    "https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg",
+    "https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg"
+  ]
+	];
+
+	const showData = (segment = 0)=>{
+		let tabData  = '';
+		imageSegments[segment].forEach((src)=>{tabData += `<div><img src=${src} /></div>`});
+
+		tabBody.innerHTML = tabData;
+	};
+
+	showData();
+
+</script>
+</html>
+
+
+<!-- 
+
+	const apiUrl = 'https://api.pexels.com/v1/search?query=lights&per_page=12&page=1';
+
+
+	fetch(apiUrl, {
+		method: 'GET',
+		headers: {
+    'Authorization': 'PgfK8Skizpf0rY5i5vOzXXWOOcTNAbvi7aR6DUvKEcjirKqZljEoS9v3' // 
+}
+})
+	.then(response => {
+		if (!response.ok) {
+			throw new Error('Network response was not ok');
+		}
+		return response.json();
+	})
+	.then(data => {
+		// console.log(data.photos);
+
+		data.photos.map((item)=>{document.write(item.src.original)})
+	})
+	.catch(error => {
+		console.error('There was a problem with the fetch operation:', error);
+	});
+
+
+******waterfall
+https://images.pexels.com/photos/358457/pexels-photo-358457.jpeghttps://images.pexels.com/photos/1875480/pexels-photo-1875480.jpeghttps://images.pexels.com/photos/62627/niagara-cases-water-waterfall-62627.jpeghttps://images.pexels.com/photos/949194/pexels-photo-949194.jpeghttps://images.pexels.com/photos/788200/pexels-photo-788200.jpeghttps://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeghttps://images.pexels.com/photos/2406395/pexels-photo-2406395.jpeghttps://images.pexels.com/photos/414061/pexels-photo-414061.jpeghttps://images.pexels.com/photos/327394/pexels-photo-327394.jpeghttps://images.pexels.com/photos/954929/pexels-photo-954929.jpeghttps://images.pexels.com/photos/1080421/pexels-photo-1080421.jpeghttps://images.pexels.com/photos/931007/pexels-photo-931007.jpeg 
+
+
+****nature
+https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeghttps://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeghttps://images.pexels.com/photos/15286/pexels-photo.jpghttps://images.pexels.com/photos/1366909/pexels-photo-1366909.jpeghttps://images.pexels.com/photos/707344/pexels-photo-707344.jpeghttps://images.pexels.com/photos/1820563/pexels-photo-1820563.jpeghttps://images.pexels.com/photos/733860/pexels-photo-733860.jpeghttps://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeghttps://images.pexels.com/photos/2086622/pexels-photo-2086622.jpeghttps://images.pexels.com/photos/234272/pexels-photo-234272.jpeghttps://images.pexels.com/photos/2189696/pexels-photo-2189696.jpeghttps://images.pexels.com/photos/772803/pexels-photo-772803.jpeg
+
+
+
+
+***books
+https://images.pexels.com/photos/4132936/pexels-photo-4132936.pnghttps://images.pexels.com/photos/5084674/pexels-photo-5084674.jpeghttps://images.pexels.com/photos/5530604/pexels-photo-5530604.jpeghttps://images.pexels.com/photos/922100/pexels-photo-922100.pnghttps://images.pexels.com/photos/4058794/pexels-photo-4058794.jpeghttps://images.pexels.com/photos/4058797/pexels-photo-4058797.jpeghttps://images.pexels.com/photos/5331071/pexels-photo-5331071.jpeghttps://images.pexels.com/photos/5331074/pexels-photo-5331074.jpeghttps://images.pexels.com/photos/4865603/pexels-photo-4865603.jpeghttps://images.pexels.com/photos/4581325/pexels-photo-4581325.jpeghttps://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeghttps://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg
+
+
+
+****forest
+https://images.pexels.com/photos/775201/pexels-photo-775201.jpeghttps://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeghttps://images.pexels.com/photos/38136/pexels-photo-38136.jpeghttps://images.pexels.com/photos/142497/pexels-photo-142497.jpeghttps://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeghttps://images.pexels.com/photos/418831/pexels-photo-418831.jpeghttps://images.pexels.com/photos/9754/mountains-clouds-forest-fog.jpghttps://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeghttps://images.pexels.com/photos/338936/pexels-photo-338936.jpeghttps://images.pexels.com/photos/1423600/pexels-photo-1423600.jpeghttps://images.pexels.com/photos/167698/pexels-photo-167698.jpeghttps://images.pexels.com/photos/113338/pexels-photo-113338.jpeg
+
+****Rivers
+
+https://images.pexels.com/photos/1179225/pexels-photo-1179225.jpeghttps://images.pexels.com/photos/709552/pexels-photo-709552.jpeghttps://images.pexels.com/photos/788200/pexels-photo-788200.jpeghttps://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeghttps://images.pexels.com/photos/3656989/pexels-photo-3656989.jpeghttps://images.pexels.com/photos/355288/pexels-photo-355288.jpeghttps://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeghttps://images.pexels.com/photos/1766838/pexels-photo-1766838.jpeghttps://images.pexels.com/photos/2178175/pexels-photo-2178175.jpeghttps://images.pexels.com/photos/2150347/pexels-photo-2150347.jpeghttps://images.pexels.com/photos/2166695/pexels-photo-2166695.jpeghttps://images.pexels.com/photos/1629803/pexels-photo-1629803.jpeg
+
+
+****Lights
+https://images.pexels.com/photos/1124960/pexels-photo-1124960.jpeghttps://images.pexels.com/photos/220118/pexels-photo-220118.jpeghttps://images.pexels.com/photos/220067/pexels-photo-220067.jpeghttps://images.pexels.com/photos/567985/pexels-photo-567985.jpeghttps://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeghttps://images.pexels.com/photos/247737/pexels-photo-247737.jpeghttps://images.pexels.com/photos/963436/pexels-photo-963436.jpeghttps://images.pexels.com/photos/949587/pexels-photo-949587.jpeghttps://images.pexels.com/photos/754262/pexels-photo-754262.jpeghttps://images.pexels.com/photos/301673/pexels-photo-301673.jpeghttps://images.pexels.com/photos/431722/pexels-photo-431722.jpeghttps://images.pexels.com/photos/1146562/pexels-photo-1146562.jpeg
+
+
+***mountains
+https://images.pexels.com/photos/417173/pexels-photo-417173.jpeghttps://images.pexels.com/photos/691668/pexels-photo-691668.jpeghttps://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeghttps://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeghttps://images.pexels.com/photos/1670187/pexels-photo-1670187.jpeghttps://images.pexels.com/photos/355747/pexels-photo-355747.jpeghttps://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeghttps://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeghttps://images.pexels.com/photos/1366909/pexels-photo-1366909.jpeghttps://images.pexels.com/photos/540518/pexels-photo-540518.jpeghttps://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeghttps://images.pexels.com/photos/869258/pexels-photo-869258.jpeg
+
+
+****animals
+
+https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeghttps://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeghttps://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeghttps://images.pexels.com/photos/34098/south-africa-hluhluwe-giraffes-pattern.jpghttps://images.pexels.com/photos/792381/pexels-photo-792381.jpeghttps://images.pexels.com/photos/37833/rainbow-lorikeet-parrots-australia-rainbow-37833.jpeghttps://images.pexels.com/photos/62289/yemen-chameleon-chamaeleo-calyptratus-chameleon-reptile-62289.jpeghttps://images.pexels.com/photos/814898/pexels-photo-814898.jpeghttps://images.pexels.com/photos/288621/pexels-photo-288621.jpeghttps://images.pexels.com/photos/247376/pexels-photo-247376.jpeghttps://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeghttps://images.pexels.com/photos/52500/horse-herd-fog-nature-52500.jpeg
+
+
+***art
+https://images.pexels.com/photos/3246665/pexels-photo-3246665.pnghttps://images.pexels.com/photos/102127/pexels-photo-102127.jpeghttps://images.pexels.com/photos/1193743/pexels-photo-1193743.jpeghttps://images.pexels.com/photos/962312/pexels-photo-962312.jpeghttps://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeghttps://images.pexels.com/photos/743986/pexels-photo-743986.jpeghttps://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeghttps://images.pexels.com/photos/1570264/pexels-photo-1570264.jpeghttps://images.pexels.com/photos/1209843/pexels-photo-1209843.jpeghttps://images.pexels.com/photos/886521/pexels-photo-886521.jpeghttps://images.pexels.com/photos/699466/pexels-photo-699466.jpeghttps://images.pexels.com/photos/889839/pexels-photo-889839.jpeg
+
+
+***history
+https://images.pexels.com/photos/36006/renaissance-schallaburg-figures-facade.jpghttps://images.pexels.com/photos/1172018/pexels-photo-1172018.jpeghttps://images.pexels.com/photos/820735/pexels-photo-820735.jpeghttps://images.pexels.com/photos/951531/pexels-photo-951531.jpeghttps://images.pexels.com/photos/135018/pexels-photo-135018.jpeghttps://images.pexels.com/photos/2952871/pexels-photo-2952871.jpeghttps://images.pexels.com/photos/208674/pexels-photo-208674.jpeghttps://images.pexels.com/photos/161798/stonehenge-architecture-history-monolith-161798.jpeghttps://images.pexels.com/photos/73821/train-wreck-steam-locomotive-locomotive-railway-73821.jpeghttps://images.pexels.com/photos/2402926/pexels-photo-2402926.jpeghttps://images.pexels.com/photos/161863/edinburgh-carlton-hill-landscape-scotland-161863.jpeghttps://images.pexels.com/photos/355188/pexels-photo-355188.jpeg
+
+
+****Music
+https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeghttps://images.pexels.com/photos/167092/pexels-photo-167092.jpeghttps://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeghttps://images.pexels.com/photos/1010519/pexels-photo-1010519.jpeghttps://images.pexels.com/photos/164821/pexels-photo-164821.jpeghttps://images.pexels.com/photos/63703/pexels-photo-63703.jpeghttps://images.pexels.com/photos/144429/pexels-photo-144429.jpeghttps://images.pexels.com/photos/257904/pexels-photo-257904.jpeghttps://images.pexels.com/photos/534283/pexels-photo-534283.jpeghttps://images.pexels.com/photos/1876279/pexels-photo-1876279.jpeghttps://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeghttps://images.pexels.com/photos/934067/pexels-photo-934067.jpeg
+
+
+***space
+
+https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeghttps://images.pexels.com/photos/998641/pexels-photo-998641.jpeghttps://images.pexels.com/photos/41162/moon-landing-apollo-11-nasa-buzz-aldrin-41162.jpeghttps://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpghttps://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeghttps://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeghttps://images.pexels.com/photos/87009/earth-soil-creep-moon-lunar-surface-87009.jpeghttps://images.pexels.com/photos/816608/pexels-photo-816608.jpeghttps://images.pexels.com/photos/41951/solar-system-emergence-spitzer-telescope-telescope-41951.jpeghttps://images.pexels.com/photos/924824/pexels-photo-924824.jpeghttps://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeghttps://images.pexels.com/photos/796206/pexels-photo-796206.jpeg
+
+
+****technology
+https://images.pexels.com/photos/546819/pexels-photo-546819.jpeghttps://images.pexels.com/photos/356056/pexels-photo-356056.jpeghttps://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeghttps://images.pexels.com/photos/414860/pexels-photo-414860.jpeghttps://images.pexels.com/photos/267350/pexels-photo-267350.jpeghttps://images.pexels.com/photos/919734/pexels-photo-919734.jpeghttps://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeghttps://images.pexels.com/photos/7974/pexels-photo.jpghttps://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeghttps://images.pexels.com/photos/123335/pexels-photo-123335.jpeghttps://images.pexels.com/photos/699122/pexels-photo-699122.jpeghttps://images.pexels.com/photos/256381/pexels-photo-256381.jpeg
+
+
+***science
+https://images.pexels.com/photos/256262/pexels-photo-256262.jpeghttps://images.pexels.com/photos/132477/pexels-photo-132477.jpeghttps://images.pexels.com/photos/414860/pexels-photo-414860.jpeghttps://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeghttps://images.pexels.com/photos/60582/newton-s-cradle-balls-sphere-action-60582.jpeghttps://images.pexels.com/photos/356040/pexels-photo-356040.jpeghttps://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeghttps://images.pexels.com/photos/954585/pexels-photo-954585.jpeghttps://images.pexels.com/photos/256381/pexels-photo-256381.jpeghttps://images.pexels.com/photos/220989/pexels-photo-220989.jpeghttps://images.pexels.com/photos/2156/sky-earth-space-working.jpghttps://images.pexels.com/photos/2280547/pexels-photo-2280547.jpeg
+
+***travel
+https://images.pexels.com/photos/2245436/pexels-photo-2245436.pnghttps://images.pexels.com/photos/346885/pexels-photo-346885.jpeghttps://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeghttps://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeghttps://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeghttps://images.pexels.com/photos/386009/pexels-photo-386009.jpeghttps://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeghttps://images.pexels.com/photos/1051073/pexels-photo-1051073.jpeghttps://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeghttps://images.pexels.com/photos/2087391/pexels-photo-2087391.jpeghttps://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeghttps://images.pexels.com/photos/731217/pexels-photo-731217.jpeg
+
+
+-->
+
+
+
