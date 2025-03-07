@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.slider-item-1{
+    background-image: url('https://www.pilogistics.in/assets/images/slider-bg.jpg');
+    padding: 100px;
+}
+
+.carousel-item figure:first-child{
+    width: 200px;
+}
+
+.carousel-item figure:nth-child(3){
+    width: 150px;
+}
+
+img{
+    width: 100%;
+}
+
+.slider-vehical{
+    width: 400px;
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: 0;
+    animation: slide-in 4s infinite linear;
+}
+
+@keyframes slide-in {
+    0%{
+        top: 47%;
+    }
+    50%{
+        top: 53%;
+    }
+    100%{
+        top: 47%;
+    }
+}
+
+.slider-1-bg{
+    background-image: url('https://www.pilogistics.in/assets/images/slider-plane-bg.jpg');
+    background-size: cover;
+    background-position: 0% 0%;
+    animation: background-motion 4s infinite linear;
+}
+
+@keyframes background-motion{
+    0%{
+        background-position: 0% 0%;
+    }
+    100%{
+        background-position: 0% 40%;
+    }
+}

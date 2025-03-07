@@ -1,0 +1,24 @@
+@media only screen and (max-width: 768px) {
+    .slider-item-1{
+        padding: 30px;
+    }
+    .carousel-item figure:first-child{
+        width: 140px;
+    }
+    .carousel-item p{
+        padding-right: 100px;
+        color: #ffffff;
+    }
+    .carousel-item figure:nth-child(3){
+        width: 80px;
+    }
+    .slider-vehical{
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .logo{
+        width: 200px;
+    }
+}
