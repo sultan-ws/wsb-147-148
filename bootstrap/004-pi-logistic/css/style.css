@@ -52,3 +52,7 @@ img{
         background-position: 0% 40%;
     }
 }
+
+.item{
+    background-color: red !important;
+}
