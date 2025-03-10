@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body{
+            cursor: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed w-[100px] cursorMove translate-[-50%]">
+        <img class="w-[full]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZfsycNsrJx0_1C1wWad9vUmDX7_SSQ_kkwzICgKBX3wQUWcjbWLPd5S9LgqWGoQTHMc&usqp=CAU" alt="">
+    </div>
+    <div class="h-[100vh] grid place-items-center bg-[lightblue]">
+        <div>
+            <h2 class="text-[28px] font-[700] text-center">Weather App</h2>
+            <div class="bg-[whitesmoke] p-5 mt-2 w-[500px] rounded-lg">
+                <input type="text" id="cityInput" class="border border-black rounded-lg p-[5px_10px] w-full">
+            </div>
+        </div>
+    </div>
+    <script>
+        const APIKEY='0f2fb94282ad6a3dbf2387c407b74806';
+        const imgurl="https://openweathermap.org/img/wn/";
+        const input = document.querySelector('#cityInput');
+        // const APIURL=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`;
+
+        const fetchWeather = async(city)=>{
+            const APIURL=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`;
+
+            let response = await fetch(APIURL);
+            response = await response.json();
+            if(response.cod !== 200) return alert('City not found');
+
+            console.log(response)
+
+            console.log(imgurl + response.weather[0].icon + '@2x.png')
+        };
+
+        
+
+        input.addEventListener('keyup', (e)=>{
+            if(e.key === 'Enter'){
+                fetchWeather(e.target.value)
+            }
+        });
+
+        const cursorMove = document.querySelector('.cursorMove');
+
+
+
+        window.addEventListener('mousemove', (e)=>{
+            cursorMove.style.left = `${e.clientX}px`;
+            cursorMove.style.top = `${e.clientY}px`;
+        })
+    </script>
+</body>
+</html>
