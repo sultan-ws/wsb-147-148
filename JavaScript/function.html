@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            background-color: red;
+            color: white;
+            padding: 10px;
+        }
+        ul{
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <button onclick="functionName()">Click me</button>
+    <button onclick="dummyFunction()">Click me</button>
+    <ul>
+        <li>click first</li>
+        <li>click me 2</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+    </ul>
     <script>
+
+        const allLis = document.querySelectorAll('li');
+
+          const dummyFunction = () => {
+            console.log('object')
+        };
+
+        allLis.forEach((li, index)=>{
+            li.addEventListener('click', dummyFunction);
+        })
+
+        const abc = allLis[0].nextElementSibling;
+        const parent = allLis[0].parentElement;
+        const btn = parent.previousSibling;
+        console.log(parent, btn)
+
+      
+
+        
         // function
         // function functionName() {
         //     console.log('hello');
@@ -34,7 +94,7 @@
         // function myFunction(a, b = 10){
         //     console.log(a + b);
         // };
-        
+
         // myFunction(10, 15);
 
 
@@ -51,8 +111,49 @@
 
         // console.log(myFunction.length)
 
+        // function myFunction(a, b = 30){
+        //     console.log('hello world', a, b)
+        // }
 
-        
+        // myFunction(10);
+
+        // const myFunction = (a, b = 30) => {
+        //     return 'hello';
+        //     console.log('hello world', a, b);
+
+        // }
+
+        // const val = myFunction(10, 40);
+
+        // console.log('val=>', val)
+
+
+
+        // const result = arr.map((item, index)=>{
+        //     return 'hello';
+        //     // console.log(item, index)
+        // });
+
+        // const result = arr.map((item, index)=>(
+        //     'hello'
+        // ));
+
+
+
+        // const dummyFunction = () => {
+        //     const arr = [10, 23, 31, 40, 67, 60, 70, 80];
+
+        //     const result = arr.filter((val, item) => val % 2 === 0);
+        //     console.log(result)
+        // };
+
+        // addEventListener('click', ()=>{});
+
+        // setTimeout(function(){
+        //     console.log('hello world')
+        // }, 2000);
+
     </script>
 </body>
+
 </html>
