@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1365px;
+    margin: auto;
+}
+
+header {
+    background-color: #EBF8FC;
+    font-family: 'Inter Variable', sans-serif;
+}
+
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-inner > div,
+.header-inner ul,
+.buttons{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 155px;
+    margin-right: 20px;
+}
+
+img{
+    width: 100%;
+}
+
+nav li{
+    font-size: 15px;
+    color: #7d7d7d;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: 0 8px;
+    line-height: 23px;
+}
+
+nav li:hover{
+    color: rgb(236, 107, 108);
+}
+
+.user-icons{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.user-icons li{
+    margin: 0 12px;
+}
+
+.upgrade-button img{
+    width: 18px;
+}
+
+.upgrade-button{
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: 0 12px;
+}
+
+.upgrade-button span{
+    color:#fca120;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.upgrade-button span:hover{
+    color: (236, 107, 108);
+}
+
+.hero-section{
+    background-color: #EBF8FC;
+}
+
+.hero-section .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 40px;
+}
+
+.slider-container{
+    max-width:600px;
+}
+
+.slider-item{
+    border-radius: 16px;
+    /* box-shadow: 0 0 4px 8px lightgray; */
+    overflow: hidden;
+}
+
+.slick-prev{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.484);
+    z-index: 999;
+    width: 50px;
+    height: 100px;
+    opacity: 1;
+}
+
+.slick-prev::after{
+    content: "\f053";
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    color: red;
+    background-color: yellow;
+    left: 100%;
+}
+
+.slick-next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.484);
+    z-index: 999;
+    width: 50px;
+    height: 100px;
+}
