@@ -116,13 +116,17 @@ nav li:hover{
     opacity: 1;
 }
 
-.slick-prev::after{
+.slick-prev::before,
+.slick-next::before{
     content: "\f053";
     font-family: 'Font Awesome 5 Free';
-    position: absolute;
-    color: red;
-    background-color: yellow;
-    left: 100%;
+    font-weight: 600;
+    font-size: 40px;
+} 
+
+.slick-prev:hover,
+.slick-next:hover{
+    background: rgba(255, 255, 255, 0.484);
 }
 
 .slick-next{

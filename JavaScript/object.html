@@ -1,5 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .count-container {
+            width: 100px;
+            background-color: red;
+            color: white;
+            margin: auto;
+        }
+
+        .count-container2 {
+            width: 100px;
+            background-color: black;
+            color: white;
+            margin: auto;
+        }
+
+        .count {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="count-container">Count is <span>10</span></div>
+    <div class="count-container2">Count is <span>10</span></div>
+    <div class="count">
+        <input type="number">
+        <button>Change Value</button>
+        <button onclick="handleCount()">check count</button>
+    </div>
+    <script>
+        let count = 10;
+
+        document.querySelector('.count button')
+            .addEventListener('click', () => {
+                const newVal = document.querySelector('.count input').value;
+
+                count = newVal;
+                document.querySelector('.count-container span').innerHTML = newVal;
+                document.querySelector('.count-container2 span').innerHTML = newVal;
+            });
+
+        function handleCount() {
+            console.log(count)
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,4 +167,4 @@
 
     </script>
 </body>
-</html>
+</html> -->

@@ -1,4 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
 body{
-  background-color: red;
-  color: white;
+  background-color: whitesmoke;
+}
+form{
+  width: 500px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+label{
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+input{
+  padding: 10px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 4px;
 }
