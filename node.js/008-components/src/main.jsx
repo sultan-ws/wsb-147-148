@@ -5,12 +5,14 @@ import '@fontsource/merriweather';
 import Home from './pages/Home';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Accordion from './pages/Accordion';
+import ToDoList from './pages/ToDoList';
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path='/' element={<Home />} />
       <Route path='/accordion' element={<Accordion />} />
+      <Route path='/to-do-list' element={<ToDoList />} />
     </>
   )
 )
