@@ -7,13 +7,13 @@ const Header = () => {
     const [isSideNav, setIsSideNav] = useState(false);
     return (
         <div className='font-[Inter_Variable] capitalize py-4 lg:px-20 md:px-10 sm:px-5 px-2'>
-            <div className={`fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.4)] ${isSideNav ? '' : 'hidden'}`}>
+            <div className={`fixed top-0 left-0 w-full h-full origin-center bg-[rgba(0,0,0,0.4)] ${isSideNav ? 'scale-[1]' : 'scale-[0]'}`}>
                 <span
                     onClick={() => setIsSideNav(false)}
                     className='absolute top-0 right-0 text-[40px] text-white px-2'>
                     &times;
                 </span>
-                <SideNav left={isSideNav ? 0 : -100} />
+                <SideNav isSideNav={isSideNav} />
             </div>
             <div className='flex justify-between items-center'>
                 <div className='flex justify-between items-center gap-5'>

@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+.slider-container{
+    max-width:600px;
+}
+
+.slider-item{
+    border-radius: 16px;
+    /* box-shadow: 0 0 4px 8px lightgray; */
+    overflow: hidden;
+}
+
+.slick-prev{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.484);
+    z-index: 999;
+    width: 50px;
+    height: 100px;
+    opacity: 1;
+}
+
+.slick-prev::before,
+.slick-next::before{
+    content: "\f053";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    font-size: 40px;
+} 
+
+.slick-prev:hover,
+.slick-next:hover{
+    background: rgba(255, 255, 255, 0.484);
+}
+
+.slick-next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.484);
+    z-index: 999;
+    width: 50px;
+    height: 100px;
+}
+
+.slick-slider{
+    z-index: -1 !important;
+}
