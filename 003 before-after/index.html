@@ -70,10 +70,65 @@
         /* li::after{
             content: '😊';
         } */
+
+        .container1{
+            max-width: 1000px;
+            margin: auto;
+            background-color: olive;
+            padding: 8px;
+            display: grid;
+            grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: auto;
+            gap: 8px;
+        }
+
+        .inner1{
+            background-color: aqua;
+            border: 1px solid white;
+            box-sizing: border-box;
+            
+        }
+
+        @media only screen and (max-width: 992px){
+            .container1{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media only screen and (max-width: 768px){
+            .container1{
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media only screen and (max-width: 568px){
+            .container1{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
+    <div class="container1">
+       <div class="inner1">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, architecto perspiciatis. Quia, ipsum distinctio incidunt perspiciatis unde facere quasi minima, eum dicta porro asperiores recusandae. Maiores, harum! Minus, placeat voluptas.
+       </div>
+       <div class="inner1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, pariatur? Voluptatem earum aliquam reiciendis nulla quidem. Saepe porro sapiente dicta dignissimos, ipsa cupiditate nihil consectetur quasi iure quam harum voluptatum.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero delectus aliquam assumenda officiis unde. Odit alias perspiciatis, quidem autem tenetur quibusdam deserunt, unde laboriosam atque corporis, facilis temporibus sequi sed?
+       </div>
+       <div class="inner1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cum excepturi nesciunt soluta corrupti similique fuga nihil, recusandae beatae magni tenetur culpa eum esse unde ea nam saepe quidem. Eum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptatem rerum ullam repellendus quas, sequi expedita in id incidunt officia voluptatibus consectetur optio nulla! Blanditiis asperiores consectetur suscipit et eligendi.
+       </div>
+       <div class="inner1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium voluptas tempore impedit a repudiandae rerum fugit officia nobis quibusdam porro corrupti ullam dolorum exercitationem adipisci, veniam natus amet, itaque magnam!
+       </div>
+       <div class="inner1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate saepe recusandae eligendi in doloribus iste, deleniti quam animi iure, reprehenderit ullam minus vel voluptatibus, impedit consectetur inventore! Eum, adipisci iste.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta delectus tempore dolores qui. Ipsum est excepturi quos odit, fugit facilis culpa dolorum in fugiat voluptatem delectus sint, at similique accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, est unde! Debitis, impedit accusantium doloribus quos deserunt tempora laboriosam quidem illo id suscipit ab soluta, magnam, quo reiciendis facere. Illum?
+       </div>
+       <div class="inner1">6</div>
+
+    </div>
+    <!-- <header>
         <nav>
             <ul>
                 <li>nav 1</li>
@@ -90,7 +145,7 @@
         <div class="inner">
             <h1>Hello World</h1>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>
 

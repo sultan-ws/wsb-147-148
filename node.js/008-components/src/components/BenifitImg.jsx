@@ -8,4 +8,4 @@ const BenifitImg = ({src}) => {
     )
 }
 
-export default BenifitImg
+export default BenifitImg;
